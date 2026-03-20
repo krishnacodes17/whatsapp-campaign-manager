@@ -1,15 +1,28 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import API from "../services/api"
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+
+  const navigate = useNavigate()
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data); // abhi backend connect nahi
+  const onSubmit =async (data) => {
+    try {
+      const res = await API.post("/auth/login",data)
+
+      console.log(res.data)
+      navigate("/dashboard")
+
+    } catch (error) {
+      console.error(error?.response?.data?.message || error.message)
+    }
   };
 
   return (
