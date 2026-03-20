@@ -169,3 +169,26 @@ describe('Invitations API', () => {
     expect(res.status).toBe(400);
   });
 });
+
+describe('Contacts API', () => {
+  it('DELETE /api/contacts/:id deletes a contact', async () => {
+    const res = await request(app).delete('/api/contacts/cont1');
+    expect(res.status).toBe(200);
+    expect(res.body.message).toBe('Contact deleted');
+  });
+
+  it('POST /api/campaigns/:campaignId/contacts/upload imports CSV', async () => {
+    const csvContent = 'name,phone,email\nAlice,+1234567890,alice@example.com\nBob,+0987654321,bob@example.com';
+    const res = await request(app)
+      .post('/api/campaigns/camp1/contacts/upload')
+      .attach('file', Buffer.from(csvContent), { filename: 'contacts.csv', contentType: 'text/csv' });
+    expect(res.status).toBe(201);
+    expect(res.body).toHaveProperty('imported');
+  });
+
+  it('POST upload returns 400 when no file provided', async () => {
+    const res = await request(app)
+      .post('/api/campaigns/camp1/contacts/upload');
+    expect(res.status).toBe(400);
+  });
+});
