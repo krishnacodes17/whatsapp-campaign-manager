@@ -1,6 +1,7 @@
 const User = require("../models/user.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { generateToken } = require("../utils/generateToken");
 
 //  register a User
 async function registerUserController(req, res) {
@@ -11,7 +12,7 @@ async function registerUserController(req, res) {
     if (!name || !email || !password) {
       return res.status(400).json({
         success: false,
-        message: "please provide all field ",
+        message: "please provide all field name , email , password",
       });
     }
 
@@ -79,9 +80,8 @@ async function loginUserController(req, res) {
     }
 
     // token  generate
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "3d",
-    });
+    const token = generateToken(user._id)
+
 
     res.cookie("token", token, {
       httpOnly: true,
