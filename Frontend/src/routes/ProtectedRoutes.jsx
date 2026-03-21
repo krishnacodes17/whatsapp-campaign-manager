@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import API from "../services/api";
 
 const ProtectedRoute = ({ children }) => {
@@ -23,7 +23,7 @@ const ProtectedRoute = ({ children }) => {
     return <div>Loading...</div>;
   }
 
-  return isAuth ? children : <Navigate to="/" />;
+  return isAuth ? <Outlet /> : <Navigate to="/" />;
 };
 
 export default ProtectedRoute;
