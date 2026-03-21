@@ -8,6 +8,7 @@ app.use(cookieParser())
 
 
 const authRoutes = require("./routes/authRoutes")
+const groupsRoutes = require("./routes/groups.routes")
 
 
 app.use(cors({
@@ -16,6 +17,7 @@ app.use(cors({
 }))
 
 app.use("/api/auth", authRoutes)
+app.use("/api/groups",groupsRoutes)
 
 
 

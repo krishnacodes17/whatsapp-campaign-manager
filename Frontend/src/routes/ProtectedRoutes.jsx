@@ -1,11 +1,29 @@
+import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
+import API from "../services/api";
 
+const ProtectedRoute = ({ children }) => {
+  const [isAuth, setIsAuth] = useState(null);
 
-const ProtectedRoute = ({children}) =>{
-    const isAuthenticated = document.cookie.includes("token");
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        await API.get("/auth/me");
+        setIsAuth(true);
+      } catch (error) {
+        setIsAuth(false);
+      }
+    };
 
-    return isAuthenticated ? children : <Navigate to="/" />
-}
+    checkAuth();
+  }, []);
 
+  // 🔥 IMPORTANT: loading state handle karo
+  if (isAuth === null) {
+    return <div>Loading...</div>;
+  }
 
-export default ProtectedRoute
+  return isAuth ? children : <Navigate to="/" />;
+};
+
+export default ProtectedRoute;

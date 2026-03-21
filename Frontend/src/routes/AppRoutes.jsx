@@ -18,7 +18,7 @@ function AppRoutes() {
             <DashBoard/>
           </ProtectedRoute>
         } />
-        
+
       </Routes> 
     </BrowserRouter>
   )

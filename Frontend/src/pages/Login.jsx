@@ -13,17 +13,18 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit =async (data) => {
-    try {
-      const res = await API.post("/auth/login",data)
+  const onSubmit = async (data) => {
+  try {
+    const res = await API.post("/auth/login", data);
 
-      console.log(res.data)
-      navigate("/dashboard")
+    console.log("API RESPONSE:", res);
 
-    } catch (error) {
-      console.error(error?.response?.data?.message || error.message)
-    }
-  };
+    navigate("/dashboard");
+
+  } catch (error) {
+    console.error(error?.response?.data?.message || error.message);
+  }
+};
 
   return (
     <div className="h-screen flex items-center justify-center bg-gray-100">
