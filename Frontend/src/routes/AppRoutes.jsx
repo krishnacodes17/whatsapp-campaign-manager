@@ -8,6 +8,8 @@ import ProtectedRoute from "./ProtectedRoutes";
 import CreateGroups from "../pages/CreateGroups";
 import Groups from "../pages/Groups";
 import GroupForm from "../pages/GroupForm";
+import UploadMembers from "../pages/UploadMebers";
+import Members from "../pages/Members";
 
 function AppRoutes() {
   return (
@@ -21,6 +23,8 @@ function AppRoutes() {
           <Route path="/create-group" element={<CreateGroups />} />
           <Route path="/groups" element={<Groups />} />
           <Route path="/edit-group/:id" element={<GroupForm />} />
+          <Route path="/upload-members" element={<UploadMembers />} />
+          <Route path="/members" element={<Members />} />
 
         </Route>
       </Routes>

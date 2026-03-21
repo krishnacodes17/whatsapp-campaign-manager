@@ -9,7 +9,8 @@ app.use(cookieParser())
 
 const authRoutes = require("./routes/authRoutes")
 const groupsRoutes = require("./routes/groups.routes")
-
+const memberRoutes = require("./routes/member.routes")
+const inviteRoutes = require("./routes/invite.routes");
 
 app.use(cors({
     origin:"http://localhost:5173",
@@ -18,7 +19,8 @@ app.use(cors({
 
 app.use("/api/auth", authRoutes)
 app.use("/api/groups",groupsRoutes)
-
+app.use("/api/members", memberRoutes);
+app.use("/api/invites", inviteRoutes);
 
 
 

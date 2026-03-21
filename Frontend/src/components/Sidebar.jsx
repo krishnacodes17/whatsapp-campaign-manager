@@ -7,20 +7,46 @@ const Sidebar = () => {
 
       <ul className="space-y-4">
         <li>
-          <NavLink to="/dashboard" className={({isActive})=> isActive ? "text-blue-500 font-bold" : "hover:text-blue-500"}>
+          <NavLink
+            to="/dashboard"
+            className={({ isActive }) =>
+              isActive ? "text-blue-500 font-bold" : "hover:text-blue-500"
+            }
+          >
             Home
           </NavLink>
         </li>
 
         <li>
-          <NavLink to="/groups" className={({isActive})=> isActive ? "text-blue-500 font-bold" : "hover:text-blue-500"}>
+          <NavLink
+            to="/groups"
+            className={({ isActive }) =>
+              isActive ? "text-blue-500 font-bold" : "hover:text-blue-500"
+            }
+          >
             Groups
           </NavLink>
         </li>
 
         <li>
-          <NavLink to="/members" className={({isActive})=> isActive ? "text-blue-500 font-bold" : "hover:text-blue-500"}>
+          <NavLink
+            to="/members"
+            className={({ isActive }) =>
+              isActive ? "text-blue-500 font-bold" : "hover:text-blue-500"
+            }
+          >
             Members
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink
+            to="/upload-members"
+            className={({ isActive }) =>
+              isActive ? "text-blue-500 font-bold" : "hover:text-blue-500"
+            }
+          >
+            Upload Members
           </NavLink>
         </li>
       </ul>
