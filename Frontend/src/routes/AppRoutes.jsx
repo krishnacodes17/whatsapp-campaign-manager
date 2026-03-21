@@ -7,6 +7,7 @@ import DashBoard from "../pages/DashBoard";
 import ProtectedRoute from "./ProtectedRoutes";
 import CreateGroups from "../pages/CreateGroups";
 import Groups from "../pages/Groups";
+import GroupForm from "../pages/GroupForm";
 
 function AppRoutes() {
   return (
@@ -19,6 +20,8 @@ function AppRoutes() {
           <Route path="/dashboard" element={<DashBoard />} />
           <Route path="/create-group" element={<CreateGroups />} />
           <Route path="/groups" element={<Groups />} />
+          <Route path="/edit-group/:id" element={<GroupForm />} />
+
         </Route>
       </Routes>
     </BrowserRouter>

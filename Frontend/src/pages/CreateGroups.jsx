@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import API from "../services/api";
 import toast from "react-hot-toast";
+import GobackButton from "../components/GobackButton";
 function CreateGroups() {
   const {
     register,
@@ -51,12 +52,16 @@ function CreateGroups() {
           {...register("description", {})}
         />
 
-        <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded transition"
-        >
-          Create Group
-        </button>
+        <div >
+          <button
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded transition"
+          >
+            Create Group
+          </button>
+
+          {<GobackButton />}
+        </div>
       </form>
     </div>
   );

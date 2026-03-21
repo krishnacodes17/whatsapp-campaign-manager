@@ -49,5 +49,50 @@ async function getGroup(req,res) {
 }
 
 
+//  delete group
+async function deleteGroup(req,res) {
+    try {
+        const {id} = req.params;
+        await Group.findByIdAndDelete(id)
 
-module.exports = {createGroup , getGroup}
+        res.status(200).json({
+            success:true,
+            message:"Group Deleted successfully"
+        })
+    } catch (error) {
+        res.status(500).json({
+            success:false,
+            message:error.message
+        })
+    }
+}
+
+
+async function updateGroup (req, res) {
+     try {
+    const { id } = req.params;
+    const { name, description } = req.body;
+
+    const group = await Group.findByIdAndUpdate(
+      id,
+      { name, description },
+      { new: true }
+    );
+
+    res.status(200).json({
+      success: true,
+      group,
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+}
+
+
+
+
+
+module.exports = {createGroup , getGroup , deleteGroup, updateGroup}

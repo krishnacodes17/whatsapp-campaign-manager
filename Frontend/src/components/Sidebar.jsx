@@ -13,13 +13,13 @@ const Sidebar = () => {
         </li>
 
         <li>
-          <NavLink to="/groups" className="">
+          <NavLink to="/groups" className={({isActive})=> isActive ? "text-blue-500 font-bold" : "hover:text-blue-500"}>
             Groups
           </NavLink>
         </li>
 
         <li>
-          <NavLink to="/members" className=" ">
+          <NavLink to="/members" className={({isActive})=> isActive ? "text-blue-500 font-bold" : "hover:text-blue-500"}>
             Members
           </NavLink>
         </li>
