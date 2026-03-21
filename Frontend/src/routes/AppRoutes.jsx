@@ -6,6 +6,7 @@ import ForgetPassword from "../pages/ForgetPassword";
 import DashBoard from "../pages/DashBoard";
 import ProtectedRoute from "./ProtectedRoutes";
 import CreateGroups from "../pages/CreateGroups";
+import Groups from "../pages/Groups";
 
 function AppRoutes() {
   return (
@@ -17,6 +18,7 @@ function AppRoutes() {
         <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<DashBoard />} />
           <Route path="/create-group" element={<CreateGroups />} />
+          <Route path="/groups" element={<Groups />} />
         </Route>
       </Routes>
     </BrowserRouter>
